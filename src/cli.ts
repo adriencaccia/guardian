@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 import { Command, InvalidArgumentError, program } from 'commander';
 
-import { runGuardianChecks } from './index';
 import {
   displayChecksStarting,
   displayFailedChecksDetails,
   displayResultsSummary,
 } from './display';
+import { runGuardianChecks } from './index';
 import { Options, Tag } from './types/CliOptions';
 
 const hasKeyAndValue = (
@@ -89,8 +89,8 @@ program
     parseTags,
   )
   .option(
-    '-c, --cloudformations [cloudformations...]',
-    'Filter checked account resources by cloudformation stacks names',
+    '-c, --cloudformation-stacks [cloudformation-stacks...]',
+    'Filter checked account resources by CloudFormation stack names',
   )
   .option(
     '--noFail',
