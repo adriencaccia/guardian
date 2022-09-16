@@ -2,7 +2,7 @@ import { IntelligentTieringConfiguration } from '@aws-sdk/client-s3';
 import { ARN, build } from '@aws-sdk/util-arn-parser';
 import { fetchAllS3BucketIntelligentTieringConfigurations } from '../../helpers';
 import { filterS3BucketFromResources } from '../../helpers/filterS3BucketFromResources';
-import { CheckResult, Rule, Rules } from '../../types';
+import { CheckResult, Rule } from '../../types';
 
 const hasIntelligentTiering = (
   configuration: IntelligentTieringConfiguration[] | undefined,
@@ -25,6 +25,8 @@ const run = async (
 };
 
 export default {
+  ruleName: 'S3: Use Intelligent Tiering',
+  errorMessage:
+    'Intelligent Tiering is not enabled on this S3 bucket.\nSee (https://github.com/Kumo-by-Theodo/guardian/blob/master/docs/rules/use-intelligent-tiering.md) for impact and how to resolve.',
   run,
-  rule: Rules.INTELLIGENT_TIERING,
 } as Rule;

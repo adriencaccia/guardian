@@ -1,7 +1,7 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { ARN } from '@aws-sdk/util-arn-parser';
 import { fetchAllLambdaConfigurations } from '../../helpers';
-import { CheckResult, Rule, Rules } from '../../types';
+import { CheckResult, Rule } from '../../types';
 
 const ARM_ARCHITECTURE = 'arm64';
 
@@ -27,6 +27,8 @@ const run = async (
 };
 
 export default {
+  ruleName: 'Lambda: Use an ARM Architecture',
+  errorMessage:
+    "The function's architecture is not set as ARM.\nSee (https://github.com/Kumo-by-Theodo/guardian/blob/master/docs/rules/use-arm.md) for impact and how to resolve.",
   run,
-  rule: Rules.USE_ARM_ARCHITECTURE,
 } as Rule;

@@ -3,7 +3,7 @@ import {
   fetchAllAsyncLambdasArns,
   fetchAllLambdaInvokeEventConfigs,
 } from '../../helpers';
-import { Rule, Rules } from '../../types';
+import { Rule } from '../../types';
 
 const run = async (resourceArns: ARN[]) => {
   const asyncLambdasArns = await fetchAllAsyncLambdasArns(resourceArns);
@@ -21,6 +21,8 @@ const run = async (resourceArns: ARN[]) => {
 };
 
 export default {
+  ruleName: 'Lambda: Specify Failure Destination for Async Functions',
+  errorMessage:
+    'The function is asynchronous but has no failure destination set. See (https://github.com/Kumo-by-Theodo/guardian/blob/master/docs/rules/async-specify-failure-destination.md) for impact and how to resolve.',
   run,
-  rule: Rules.ASYNC_SPECIFY_FAILURE_DESTINATION,
 } as Rule;

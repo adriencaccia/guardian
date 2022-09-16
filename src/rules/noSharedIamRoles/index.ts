@@ -1,7 +1,7 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { ARN } from '@aws-sdk/util-arn-parser';
 import { fetchAllLambdaConfigurations } from '../../helpers';
-import { CheckResult, Rule, Rules } from '../../types';
+import { CheckResult, Rule } from '../../types';
 
 const isLambdaRoleShared = (
   lambdaConfiguration: FunctionConfiguration,
@@ -30,6 +30,8 @@ const run = async (
 };
 
 export default {
+  ruleName: 'Lambda: No Shared IAM Roles',
+  errorMessage:
+    'The following functions have roles used by 1 or more other functions.\nSee (https://github.com/Kumo-by-Theodo/guardian/blob/master/docs/rules/no-shared-iam-roles.md) for impact and how to resolve.',
   run,
-  rule: Rules.NO_SHARED_IAM_ROLES,
 } as Rule;

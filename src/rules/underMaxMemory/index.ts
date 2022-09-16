@@ -2,7 +2,7 @@ import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { ARN } from '@aws-sdk/util-arn-parser';
 import { AWS_HISTORICAL_MAX_MEMORY } from '../../constants';
 import { fetchAllLambdaConfigurations } from '../../helpers';
-import { CheckResult, Rule, Rules } from '../../types';
+import { CheckResult, Rule } from '../../types';
 
 const hasMemoryUnderMaxMemory = (lambdaConfiguration: FunctionConfiguration) =>
   lambdaConfiguration.MemorySize === undefined ||
@@ -24,6 +24,7 @@ const run = async (
 };
 
 export default {
+  ruleName: 'Lambda: Under Maximum Memory',
+  errorMessage: `The function's memory is set to the historical maximum limit of ${AWS_HISTORICAL_MAX_MEMORY} MB or higher.\nSee (https://github.com/Kumo-by-Theodo/guardian/blob/master/docs/rules/under-max-memory.md) for impact and how to resolve.`,
   run,
-  rule: Rules.UNDER_MAX_MEMORY,
 } as Rule;

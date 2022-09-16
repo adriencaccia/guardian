@@ -1,6 +1,6 @@
 import { ARN } from '@aws-sdk/util-arn-parser';
 import { fetchAllLambdaVersions } from '../../helpers';
-import { CheckResult, Rule, Rules } from '../../types';
+import { CheckResult, Rule } from '../../types';
 
 const MAX_AMOUNT_OF_VERSIONS = 3 + 1; // +$latest
 
@@ -17,6 +17,8 @@ const run = async (resources: ARN[]): Promise<{ results: CheckResult[] }> => {
 };
 
 export default {
+  ruleName: 'Lambda: Limited Amount of Versions',
+  errorMessage:
+    'The following functions have an amount of deployed versions greater than 3.\nSee (https://github.com/Kumo-by-Theodo/guardian/blob/master/docs/rules/limited-amount-of-versions.md) for impact and how to resolve.',
   run,
-  rule: Rules.LIMITED_AMOUNT_OF_LAMBDA_VERSIONS,
 } as Rule;

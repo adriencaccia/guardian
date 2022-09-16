@@ -1,6 +1,6 @@
 import { ARN } from '@aws-sdk/util-arn-parser';
 import { fetchAllLambdaConfigurations } from '../../helpers';
-import { CheckResult, Rule, Rules } from '../../types';
+import { CheckResult, Rule } from '../../types';
 
 const DEFAULT_MEMORY_SIZE = 1024;
 
@@ -21,6 +21,8 @@ const run = async (
 };
 
 export default {
+  ruleName: 'Lambda: No Default Memory',
+  errorMessage:
+    'The following functions have their memory set as default.\nSee (https://github.com/Kumo-by-Theodo/guardian/blob/master/docs/rules/no-default-memory.md) for impact and how to resolve.',
   run,
-  rule: Rules.NO_DEFAULT_MEMORY,
 } as Rule;

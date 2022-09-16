@@ -1,7 +1,7 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { ARN } from '@aws-sdk/util-arn-parser';
 import { fetchAllLambdaConfigurations } from '../../helpers';
-import { CheckResult, Rule, Rules } from '../../types';
+import { CheckResult, Rule } from '../../types';
 
 const hasUniqueShaCode = (
   lambdaConfiguration: FunctionConfiguration,
@@ -62,6 +62,8 @@ const run = async (
 };
 
 export default {
+  ruleName: 'Lambda: No Identical Code',
+  errorMessage:
+    "The function's code is identical to other functions.\nSee (https://github.com/Kumo-by-Theodo/guardian/blob/master/docs/rules/no-identical-code.md) for impact and how to resolve.",
   run,
-  rule: Rules.NO_IDENTICAL_CODE,
 } as Rule;

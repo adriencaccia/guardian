@@ -1,6 +1,6 @@
 import { ARN, build } from '@aws-sdk/util-arn-parser';
 import { fetchAllQueuesAttributes } from '../../helpers';
-import { CheckResult, Rule, Rules } from '../../types';
+import { CheckResult, Rule } from '../../types';
 
 interface RedrivePolicy {
   deadLetterTargetArn: string;
@@ -35,6 +35,8 @@ const run = async (
 };
 
 export default {
+  ruleName: 'Specifying a DLQ on SQS',
+  errorMessage:
+    'The queue does not have a specified Dead Letter Queue. See (https://github.com/Kumo-by-Theodo/guardian/blob/master/src/rules/specifyDlqOnSqs/specifyDlqOnSqs.md)',
   run,
-  rule: Rules.SPECIFY_DLQ_ON_SQS,
 } as Rule;
