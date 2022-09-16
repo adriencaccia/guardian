@@ -44,7 +44,8 @@ const fetchResourceArns = async (
     );
 
     return resources;
-  } catch {
+  } catch (error) {
+    console.log(error);
     displayError(
       `Unable to fetch AWS resources, check that profile "${
         process.env.AWS_PROFILE ?? ''
