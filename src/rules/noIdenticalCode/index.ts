@@ -63,7 +63,7 @@ const run = async (
 
 export default {
   ruleName: 'Lambda: No Identical Code',
-  errorMessage:
-    "The function's code is identical to other functions.\nSee (https://github.com/Kumo-by-Theodo/guardian/blob/master/docs/rules/no-identical-code.md) for impact and how to resolve.",
+  errorMessage: "The function's code is identical to other functions",
   run,
+  fileName: 'noIdenticalCode',
 } as Rule;

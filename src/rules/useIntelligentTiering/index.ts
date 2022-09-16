@@ -26,7 +26,7 @@ const run = async (
 
 export default {
   ruleName: 'S3: Use Intelligent Tiering',
-  errorMessage:
-    'Intelligent Tiering is not enabled on this S3 bucket.\nSee (https://github.com/Kumo-by-Theodo/guardian/blob/master/docs/rules/use-intelligent-tiering.md) for impact and how to resolve.',
+  errorMessage: 'Intelligent Tiering is not enabled on this S3 bucket',
   run,
+  fileName: 'useIntelligentTiering',
 } as Rule;

@@ -22,7 +22,7 @@ const run = async (
 
 export default {
   ruleName: 'Lambda: No Default Memory',
-  errorMessage:
-    'The following functions have their memory set as default.\nSee (https://github.com/Kumo-by-Theodo/guardian/blob/master/docs/rules/no-default-memory.md) for impact and how to resolve.',
+  errorMessage: 'The following functions have their memory set as default',
   run,
+  fileName: 'noDefaultMemory',
 } as Rule;

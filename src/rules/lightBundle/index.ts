@@ -25,6 +25,7 @@ const run = async (
 export default {
   ruleName: 'Lambda: Light Bundle',
   errorMessage:
-    'The following functions have bundles that weight more than 5 Mb.\nSee (https://github.com/Kumo-by-Theodo/guardian/blob/master/docs/rules/light-bundle.md) for impact and how to resolve.',
+    'The following functions have bundles that weight more than 5 Mb',
   run,
+  fileName: 'lightBundle',
 } as Rule;
