@@ -1,6 +1,6 @@
 import { ARN } from '@aws-sdk/util-arn-parser';
 import { fetchAllLambdaConfigurations } from '../../helpers';
-import { CheckResult, Rule } from '../../types';
+import { Category, CheckResult, Rule } from '../../types';
 
 const DEFAULT_MEMORY_SIZE = 1024;
 
@@ -25,4 +25,5 @@ export default {
   errorMessage: 'The following functions have their memory set as default',
   run,
   fileName: 'noDefaultMemory',
+  categories: [Category.GREEN_IT, Category.IT_COSTS],
 } as Rule;

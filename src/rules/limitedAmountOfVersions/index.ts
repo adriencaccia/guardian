@@ -1,6 +1,6 @@
 import { ARN } from '@aws-sdk/util-arn-parser';
 import { fetchAllLambdaVersions } from '../../helpers';
-import { CheckResult, Rule } from '../../types';
+import { Category, CheckResult, Rule } from '../../types';
 
 const MAX_AMOUNT_OF_VERSIONS = 3 + 1; // +$latest
 
@@ -22,4 +22,5 @@ export default {
     'The following functions have an amount of deployed versions greater than 3',
   run,
   fileName: 'limitedAmountOfVersions',
+  categories: [Category.GREEN_IT, Category.STABILITY],
 } as Rule;

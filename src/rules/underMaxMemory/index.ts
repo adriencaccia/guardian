@@ -2,7 +2,7 @@ import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { ARN } from '@aws-sdk/util-arn-parser';
 import { AWS_HISTORICAL_MAX_MEMORY } from '../../constants';
 import { fetchAllLambdaConfigurations } from '../../helpers';
-import { CheckResult, Rule } from '../../types';
+import { Category, CheckResult, Rule } from '../../types';
 
 const hasMemoryUnderMaxMemory = (lambdaConfiguration: FunctionConfiguration) =>
   lambdaConfiguration.MemorySize === undefined ||
@@ -28,4 +28,5 @@ export default {
   errorMessage: `The function's memory is set to the historical maximum limit of ${AWS_HISTORICAL_MAX_MEMORY} MB or higher`,
   run,
   fileName: 'underMaxMemory',
+  categories: [Category.GREEN_IT, Category.IT_COSTS],
 } as Rule;

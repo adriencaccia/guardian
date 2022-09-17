@@ -1,7 +1,7 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { ARN } from '@aws-sdk/util-arn-parser';
 import { fetchAllLambdaConfigurations } from '../../helpers';
-import { CheckResult, Rule } from '../../types';
+import { Category, CheckResult, Rule } from '../../types';
 
 const isLambdaRoleShared = (
   lambdaConfiguration: FunctionConfiguration,
@@ -35,4 +35,5 @@ export default {
     'The following functions have roles used by 1 or more other functions',
   run,
   fileName: 'noSharedIamRoles',
+  categories: [Category.SECURITY, Category.STABILITY],
 } as Rule;
