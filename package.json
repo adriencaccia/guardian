@@ -4,6 +4,7 @@
   "bin": {
     "guardian": "./dist/cli.js"
   },
+  "version": "1.0.0",
   "scripts": {
     "dev": "node -r ts-node/register ./src/cli.ts",
     "clean": "rimraf ./dist/",
