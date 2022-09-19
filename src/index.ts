@@ -28,6 +28,8 @@ const fetchResourceArns = async (
   try {
     const resourcesFetchedByTags = await fetchTaggedResourceArns(tags ?? []);
 
+    console.log({ resourcesFetchedByTags, cloudformations });
+
     if (cloudformations === undefined) {
       return resourcesFetchedByTags;
     }
@@ -36,12 +38,16 @@ const fetchResourceArns = async (
       cloudformations,
     );
 
+    console.log({ resourcesFetchedByStack });
+
     const resources = intersectionWith(
       resourcesFetchedByStack,
       resourcesFetchedByTags,
       (arnA, arnB) =>
         arnA.resource === arnB.resource && arnA.service === arnB.service,
     );
+
+    console.log({ resources });
 
     return resources;
   } catch {
@@ -84,6 +90,8 @@ export const runGuardianChecks = async ({
   };
 
   decreaseRemaining();
+
+  console.log({ resourceArns });
 
   try {
     const results = await Promise.all(
